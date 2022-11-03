@@ -5,14 +5,14 @@ from .widgets import primary_widgets, secondary_widgets
 import subprocess
 
 widget_defaults = {
-    'font': 'Arimo Nerd Font',
+    'font': 'Arimo NF',
     'fontsize': 14,
     'padding': 1,
 }
 extension_defaults = widget_defaults.copy()
 
 def status_bar(widgets):
-    return bar.Bar(widgets, 24, opacity=0.92)
+    return bar.Bar(widgets, 25, opacity=0.92)
 
 screens = [Screen(top=status_bar(primary_widgets))]
 

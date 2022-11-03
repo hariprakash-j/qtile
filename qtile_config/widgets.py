@@ -17,16 +17,16 @@ def icon(fg='text', bg='dark', fontsize=16, text="?"):
         **base(fg, bg),
         fontsize=fontsize,
         text=text,
-        padding=3
+        padding=1
     )
 
 
 def powerline(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
-        text=" ", # Icon: nf-oct-triangle_left
-        fontsize=37,
-        padding=-2
+        text="", # Icon: nf-oct-triangle_left
+        fontsize=35,
+        padding=-4
     )
 
 
@@ -35,7 +35,6 @@ def workspaces():
         separator(),
         widget.GroupBox(
             **base(fg='light'),
-            font='Arimo NF',
             fontsize=19,
             margin_y=3,
             margin_x=0,
@@ -59,43 +58,40 @@ def workspaces():
         separator(),
     ]
 
-widget_defaults = {
-    'font': 'Arimo NF',
-    'fontsize': 14,
-    'padding': 1,
-}
-extension_defaults = widget_defaults.copy()
-
 primary_widgets = [
     *workspaces(),
 
     separator(),
 
+    powerline('color2', 'dark'),
+
     widget.Notify(**base(bg='focus')),
 
-    icon(bg="color4", text='  '),
+    powerline('dark', 'color2'),
 
-    widget.Volume(**base(bg='color4')),
+    icon(bg="dark", fg="light", text='  '),
 
-    powerline('color3', 'color4'),
+    widget.Volume(**base(bg='dark', fg='light')),
 
-    icon(bg="color3", text='  '),  # Icon: nf-fa-feed
+    powerline('color2', 'dark'),
+
+    icon(bg="color2", text='  '),  # Icon: nf-fa-feed
     
-    widget.Wlan(**base(bg='color3'), interface='wlp4s0', format="{essid} ({percent:2.0%})"),
+    widget.Wlan(**base(bg='color2'), interface='wlp4s0', format="{essid} ({percent:2.0%})"),
 
-    powerline('color2', 'color3'),
+    powerline('dark', 'color2'),
 
-    widget.CurrentLayoutIcon(**base(bg='color2'), scale=0.65),
+    widget.CurrentLayoutIcon(**base(bg='dark'), scale=0.55),
 
-    widget.CurrentLayout(**base(bg='color2'), padding=5),
+    widget.CurrentLayout(**base(bg='dark', fg='light'), padding=5),
 
-    powerline('color1', 'color2'),
+    powerline('color2', 'dark'),
 
-    icon(bg="color1", fontsize=17, text='  '), # Icon: nf-mdi-calendar_clock
+    icon(bg="color2", fontsize=17, text='  '), # Icon: nf-mdi-calendar_clock
 
-    widget.Clock(**base(bg='color1'), format='%A %d/%m/%Y - %H:%M '),
+    widget.Clock(**base(bg='color2'), format='%A %d/%m/%Y - %H:%M '),
 
-    powerline('dark', 'color1'),
+    powerline('dark', 'color2'),
 
     widget.Systray(background=colors['dark'], padding=5),
 ]
@@ -105,16 +101,12 @@ secondary_widgets = [
 
     separator(),
 
-    # powerline('color1', 'dark'),
+    powerline('color2', 'dark'),
 
-    
+    powerline('dark', 'color2'),
 
-    # powerline('color1', 'color2'),
+    widget.CurrentLayoutIcon(**base(bg='dark'), scale=0.65),
 
-    widget.CurrentLayoutIcon(**base(bg='color1'), scale=0.65),
-
-    widget.CurrentLayout(**base(bg='color1'), padding=5),
-
-    powerline('dark', 'color1'),
+    widget.CurrentLayout(**base(bg='dark', fg='light'), padding=5),
 ]
 
