@@ -12,7 +12,7 @@ widget_defaults = {
 extension_defaults = widget_defaults.copy()
 
 def status_bar(widgets):
-    return bar.Bar(widgets, 25, opacity=0.92)
+    return bar.Bar(widgets, 25)
 
 screens = [Screen(top=status_bar(primary_widgets))]
 
