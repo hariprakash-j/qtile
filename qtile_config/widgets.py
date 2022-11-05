@@ -25,7 +25,7 @@ def powerline(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
         text="", # Icon: nf-oct-triangle_left
-        fontsize=35,
+        fontsize=22,
         padding=-5
     )
 
@@ -35,11 +35,11 @@ def workspaces():
         separator(),
         widget.GroupBox(
             **base(fg='light'),
-            fontsize=19,
+            fontsize=15,
             margin_y=3,
-            margin_x=0,
+            margin_x=3,
             padding_y=8,
-            padding_x=5,
+            padding_x=8,
             borderwidth=1,
             active=colors['active'],
             inactive=colors['inactive'],
@@ -69,25 +69,25 @@ primary_widgets = [
 
     powerline('dark', 'color2'),
 
-    icon(bg="dark", fg="light", text='  '),
+    icon(bg="dark", fg="light", text=''),
 
     widget.Volume(**base(bg='dark', fg='light')),
 
     powerline('color2', 'dark'),
 
-    icon(bg="color2", text='  '),  # Icon: nf-fa-feed
+    icon(bg="color2", text=''),  # Icon: nf-fa-feed
     
-    widget.Wlan(**base(bg='color2'), interface='wlp4s0', format="{essid} ({percent:2.0%})"),
+    widget.Wlan(**base(bg='color2'), interface='wlan0', format="{essid} ({percent:2.0%})"),
 
     powerline('dark', 'color2'),
 
-    widget.CurrentLayoutIcon(**base(bg='dark'), scale=0.55),
+    widget.CurrentLayoutIcon(**base(bg='dark'), scale=0.7),
 
     widget.CurrentLayout(**base(bg='dark', fg='light'), padding=5),
 
     powerline('color2', 'dark'),
 
-    icon(bg="color2", fontsize=17, text='  '), # Icon: nf-mdi-calendar_clock
+    icon(bg="color2", fontsize=17, text=''), # Icon: nf-mdi-calendar_clock
 
     widget.Clock(**base(bg='color2'), format='%A %d/%m/%Y - %H:%M '),
 
