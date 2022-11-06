@@ -32,7 +32,6 @@ def powerline(fg="light", bg="dark"):
 
 def workspaces(): 
     return [
-        separator(),
         widget.GroupBox(
             **base(fg='light'),
             fontsize=15,
@@ -69,6 +68,18 @@ primary_widgets = [
 
     powerline('dark', 'color2'),
 
+    icon(bg="dark", fg="light", text=''),
+
+    widget.Memory(**base(bg='dark', fg='light')),
+
+    powerline('color2', 'dark'),
+
+    icon(bg="color2", fg="dark", text=''),
+
+    widget.CPU(**base(bg='color2', fg='dark'), format='{freq_current}GHz {load_percent}%'),
+
+    powerline('dark', 'color2'),
+
     icon(bg="dark", fg="light", text=''),
 
     widget.Volume(**base(bg='dark', fg='light')),
@@ -81,9 +92,9 @@ primary_widgets = [
 
     powerline('dark', 'color2'),
 
-    widget.CurrentLayoutIcon(**base(bg='dark'), scale=0.7),
+    icon(bg="dark", fg='light', text=''), # Icon: nf-fae-sun_cloud
 
-    widget.CurrentLayout(**base(bg='dark', fg='light'), padding=5),
+    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="Bangalore: %t, Humidity: %h, %C"),
 
     powerline('color2', 'dark'),
 
