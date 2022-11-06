@@ -115,9 +115,16 @@ secondary_widgets = [
     powerline('color2', 'dark'),
 
     powerline('dark', 'color2'),
+    
+    icon(bg="dark", fg='light', text=''), # Icon: nf-fae-sun_cloud
 
-    widget.CurrentLayoutIcon(**base(bg='dark'), scale=0.65),
+    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="Bangalore: %t, Humidity: %h, %C"),
 
-    widget.CurrentLayout(**base(bg='dark', fg='light'), padding=5),
+    powerline('color2', 'dark'),
+
+    icon(bg="color2", fontsize=17, text=''), # Icon: nf-mdi-calendar_clock
+
+    widget.Clock(**base(bg='color2'), format='%A %d/%m/%Y - %H:%M '),
+
 ]
 
