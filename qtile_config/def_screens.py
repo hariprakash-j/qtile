@@ -5,7 +5,7 @@ from .widgets import primary_widgets, secondary_widgets
 import subprocess
 
 widget_defaults = {
-    'font': 'Ubuntu Nerd Font',
+    'font': 'JetBrainsMono Nerd Font',
     'fontsize': 15,
     'padding': 1,
 }
