@@ -12,7 +12,7 @@ def separator():
     return widget.Sep(**base(), linewidth=0, padding=5)
 
 
-def icon(fg='text', bg='dark', fontsize=16, text="?"):
+def icon(fg='text', bg='dark', fontsize=18, text="?"):
     return widget.TextBox(
         **base(fg, bg),
         fontsize=fontsize,
@@ -25,8 +25,8 @@ def powerline(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
         text="", # Icon: nf-oct-triangle_left
-        fontsize=22,
-        padding=-5
+        fontsize=25,
+        padding=0
     )
 
 
@@ -34,7 +34,7 @@ def workspaces():
     return [
         widget.GroupBox(
             **base(fg='light'),
-            fontsize=15,
+            fontsize=25,
             margin_y=3,
             margin_x=3,
             padding_y=8,
@@ -70,7 +70,7 @@ primary_widgets = [
 
     icon(bg="dark", fg="light", text=''),
 
-    widget.Memory(**base(bg='dark', fg='light')),
+    widget.Memory(**base(bg='dark', fg='light'), measure_mem='G'),
 
     powerline('color2', 'dark'),
 

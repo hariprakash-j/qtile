@@ -6,13 +6,13 @@ import subprocess
 
 widget_defaults = {
     'font': 'JetBrainsMono Nerd Font',
-    'fontsize': 15,
+    'fontsize': 23,
     'padding': 1,
 }
 extension_defaults = widget_defaults.copy()
 
 def status_bar(widgets):
-    return bar.Bar(widgets, 24)
+    return bar.Bar(widgets, 25)
 
 screens = [Screen(top=status_bar(primary_widgets))]
 
