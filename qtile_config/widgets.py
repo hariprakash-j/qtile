@@ -24,8 +24,8 @@ def icon(fg='text', bg='dark', fontsize=18, text="?"):
 def powerline(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
-        text="", # Icon: nf-oct-triangle_left
-        fontsize=25,
+        text="", # Icon: nf-oct-triangle_left
+        fontsize=22,
         padding=0
     )
 
@@ -42,7 +42,7 @@ def workspaces():
             borderwidth=1,
             active=colors['active'],
             inactive=colors['inactive'],
-            rounded=False,
+            rounded=True,
             highlight_method='block',
             urgent_alert_method='block',
             urgent_border=colors['urgent'],
