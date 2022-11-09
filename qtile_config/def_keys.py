@@ -26,10 +26,10 @@ def generate_keys(mod_key:str, terminal:str) -> list:
 
         # Volume control with volume button
         Key([], "XF86AudioLowerVolume", lazy.spawn(
-            "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+            "pactl set-sink-volume @DEFAULT_SINK@ -2%"
         )),
         Key([], "XF86AudioRaiseVolume", lazy.spawn(
-            "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+            "pactl set-sink-volume @DEFAULT_SINK@ +2%"
         )),
         Key([], "XF86AudioMute", lazy.spawn(
             "pactl set-sink-mute @DEFAULT_SINK@ toggle"
