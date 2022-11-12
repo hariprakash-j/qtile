@@ -118,7 +118,7 @@ secondary_widgets = [
     
     icon(bg="dark", fg='light', text=''), # Icon: nf-fae-sun_cloud
 
-    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="Bangalore: %t, Humidity: %h, %C"),
+    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="%t, Humidity: %h, %C"),
 
     powerline('color2', 'dark'),
 
