@@ -48,7 +48,7 @@ def generate_keys(mod_key:str, terminal:str) -> list:
 
         # App Shortcut
         Key([mod_key, "shift"], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
-        Key([mod_key], "u", lazy.spawn("nemo"), desc="Launch nemo, the file manager"),
+        Key([mod_key], "u", lazy.spawn("thunar"), desc="Launch nemo, the file manager"),
         Key([mod_key], "i", lazy.spawn("flatpak run io.gitlab.librewolf-community"), desc="Launch librewolf, the web browser"),
         Key([mod_key], "y", lazy.spawn("flatpak run io.freetubeapp.FreeTube"), desc="Launch Freetube, the youtube client"),
 
