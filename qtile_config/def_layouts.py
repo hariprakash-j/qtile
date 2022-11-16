@@ -4,8 +4,8 @@ from .def_theme import colors
 
 layout_conf = {
     'border_focus': colors['focus'][0],
-    'border_width': 2,
-    'margin': 10
+    'border_width': 4,
+    'margin': 20
 }
 
 def generate_layouts() -> list():
