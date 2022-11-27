@@ -60,6 +60,7 @@ def generate_keys(mod_key:str, terminal:str) -> list:
         # Rofi shortcuts
         Key([mod_key], "Return", lazy.spawn("rofi -show combi"), desc="Launch rofi"),
         Key([mod_key], "c", lazy.spawn("rofi -show calc -modi calc -no-show-match -no-sort"), desc="Launch rofi calculator"),
+        Key([mod_key], "x", lazy.spawn("rofi -show Workspaces -modes 'Workspaces:~/.config/rofi/scripts/workspaces.sh'"), desc="Launch codium workspaces on rofi"),
 
         # Screenshot shortcuts
         Key([mod_key], "Print", lazy.spawn("flameshot screen --path /home/hari/Pictures"), desc="Take a screenshot of the entire active monitor"),
