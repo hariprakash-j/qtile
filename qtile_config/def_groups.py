@@ -5,9 +5,9 @@ def generate_groups() -> list:
     return [
     Group("", layout="monadtall",        matches=[Match(wm_class=["librewolf, brave-browser, firefox"])]),
     Group("", layout="monadtall",        matches=[Match(wm_class=["qpdfview", "thunar", "nemo", "caja", "pcmanfm"])]),
-    Group("", layout="monadtall",        matches=[Match(wm_class=["signal"])]),
     Group("", layout="monadtall",        matches=[Match(wm_class=["jellyfinmediaplayer", "freetube"])]),
-    Group("", layout="monadtall",        matches=[Match(wm_class=["nitrogen"])]),
+    Group("", layout="monadtall",        matches=[Match(wm_class=["signal-desktop"])]),
+    Group("", layout="monadtall",        matches=[Match(wm_class=["keepassxc"])]),
     Group("", layout="monadtall",        matches=[Match(wm_class=["vscodium"])]),
     Group("", layout="monadtall",        matches=[Match(wm_class=["github"])]),
     Group("", layout="monadtall",        matches=[Match(wm_class=["github"])]),
