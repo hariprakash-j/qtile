@@ -86,9 +86,9 @@ primary_widgets = [
 
     powerline('color2', 'dark'),
 
-    icon(bg="color2", text=''),  # Icon: nf-fa-feed
+    icon(bg="color2", text=''),  # Icon: nf-fa-feed
     
-    widget.Wlan(**base(bg='color2'), interface='wlan0', format="{essid} ({percent:2.0%})"),
+    widget.Net(**base(bg='color2'), prefix='M', interface='enp6s0', format='U:{up} D:{down}'),
 
     powerline('dark', 'color2'),
 

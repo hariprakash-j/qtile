@@ -10,4 +10,4 @@ picom -b
 nitrogen --restore
 
 # Start up applications
-nextcloud &
+flatpak run com.nextcloud.desktopclient.nextcloud &
