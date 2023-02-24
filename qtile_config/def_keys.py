@@ -1,9 +1,9 @@
 from libqtile.lazy import lazy
-from libqtile.config import Key
+from libqtile.config import Key, KeyChord
 
 
 def generate_keys(mod_key:str, terminal:str) -> list:
-    return [
+    key_bindings = [
         # Switch between windows
         Key([mod_key], "h", lazy.layout.left(), desc="Move focus to left"),
         Key([mod_key], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -46,12 +46,6 @@ def generate_keys(mod_key:str, terminal:str) -> list:
         Key([mod_key, "shift"], "p", lazy.spawn("sh '/home/hari/.config/qtile/all_displays.sh'"), desc="Turn on all displays"),
         Key([mod_key], "period", lazy.next_screen(), desc='Next monitor'),
 
-        # App Shortcut
-        Key([mod_key, "shift"], "Return", lazy.spawn("alacritty"), desc="Launch terminal"),
-        Key([mod_key], "u", lazy.spawn("thunar"), desc="Launch nemo, the file manager"),
-        Key([mod_key], "i", lazy.spawn("flatpak run io.gitlab.librewolf-community"), desc="Launch librewolf, the web browser"),
-        Key([mod_key], "y", lazy.spawn("flatpak run io.freetubeapp.FreeTube"), desc="Launch Freetube, the youtube client"),
-
         #Lock and sleep shortcuts
         Key([mod_key, "shift"], "Escape", lazy.spawn("systemctl suspend")),
         Key([mod_key, "control"], "Escape", lazy.spawn("systemctl poweroff")),
@@ -67,3 +61,19 @@ def generate_keys(mod_key:str, terminal:str) -> list:
         Key([mod_key], "Print", lazy.spawn("flameshot gui --path /home/hari/Pictures"), desc="Take a screenshot of the entire active monitor"),
         
     ]
+
+    # App shortcuts using keychords
+    app_shortcuts = [
+        { "key" : "y", "description": "Launch Freetube, a youtube client", "command" : "flatpak run io.freetubeapp.FreeTube" },
+        { "key" : "i", "description": "Launch Librewolf, a Internet Browser", "command" : "flatpak run io.freetubeapp.FreeTube" },
+        { "key" : "u", "description": "Launch Thunar, a File Browser", "command" : "thunar" },
+        { "key" : "Return", "description": "Launch Alacritty, a terminal emulator", "command" : "alacritty" },
+    ]
+
+    for shortcut in app_shortcuts:
+        key_bindings.append(
+            KeyChord([mod_key], "l", [
+                Key([], shortcut["key"], lazy.spawn(shortcut["command"]), desc=shortcut["description"])
+            ]),
+        )
+    return key_bindings
