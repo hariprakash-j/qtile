@@ -2,6 +2,17 @@ from libqtile.lazy import lazy
 from libqtile.config import Key, KeyChord
 
 
+# App shortcuts using keychords
+app_chord_key = "o"
+app_shortcuts = [
+    { "key" : "y", "command" : "flatpak run io.freetubeapp.FreeTube" },
+    { "key" : "i", "command" : "flatpak run io.gitlab.librewolf-community" },
+    { "key" : "u", "command" : "thunar" },
+    { "key" : "s", "command" : "flatpak run org.signal.Signal" },
+    { "key" : "j", "command" : "com.github.iwalton3.jellyfin-media-player"},
+    { "key" : "k", "command" : "keepassxc"},
+]
+
 def generate_keys(mod_key:str, terminal:str) -> list:
     key_bindings = [
         # Switch between windows
@@ -59,21 +70,11 @@ def generate_keys(mod_key:str, terminal:str) -> list:
         # Screenshot shortcuts
         Key([mod_key], "Print", lazy.spawn("flameshot screen --path /home/hari/Pictures"), desc="Take a screenshot of the entire active monitor"),
         Key([mod_key], "Print", lazy.spawn("flameshot gui --path /home/hari/Pictures"), desc="Take a screenshot of the entire active monitor"),
+
+        # App keychords
+        Key([mod_key, "shift"], "Return", lazy.spawn("alacritty"), desc="Launch Alacritty"),
+        KeyChord([mod_key], app_chord_key, [ Key([], app["key"], lazy.spawn(app["command"])) for app in app_shortcuts ]),
         
     ]
 
-    # App shortcuts using keychords
-    app_shortcuts = [
-        { "key" : "y", "description": "Launch Freetube, a youtube client", "command" : "flatpak run io.freetubeapp.FreeTube" },
-        { "key" : "i", "description": "Launch Librewolf, a Internet Browser", "command" : "flatpak run io.freetubeapp.FreeTube" },
-        { "key" : "u", "description": "Launch Thunar, a File Browser", "command" : "thunar" },
-        { "key" : "Return", "description": "Launch Alacritty, a terminal emulator", "command" : "alacritty" },
-    ]
-
-    for shortcut in app_shortcuts:
-        key_bindings.append(
-            KeyChord([mod_key], "l", [
-                Key([], shortcut["key"], lazy.spawn(shortcut["command"]), desc=shortcut["description"])
-            ]),
-        )
     return key_bindings
