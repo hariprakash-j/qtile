@@ -9,7 +9,7 @@ def base(fg='text', bg='dark'):
 
 
 def separator():
-    return widget.Sep(**base(), linewidth=0, padding=5)
+    return widget.Sep(**base(), linewidth=0, padding=2)
 
 
 def icon(fg='text', bg='dark', fontsize=18, text="?"):
@@ -24,9 +24,9 @@ def icon(fg='text', bg='dark', fontsize=18, text="?"):
 def powerline(fg="light", bg="dark"):
     return widget.TextBox(
         **base(fg, bg),
-        text="", # Icon: nf-oct-triangle_left
-        fontsize=22,
-        padding=0
+        text="", # Icon: nf-oct-triangle_left
+        fontsize=50,
+        padding=-6
     )
 
 
@@ -34,15 +34,15 @@ def workspaces():
     return [
         widget.GroupBox(
             **base(fg='light'),
-            fontsize=25,
+            fontsize=15,
             margin_y=3,
             margin_x=3,
-            padding_y=8,
-            padding_x=8,
-            borderwidth=1,
+            padding_y=9,
+            padding_x=9,
+            borderwidth=0,
             active=colors['active'],
             inactive=colors['inactive'],
-            rounded=True,
+            rounded=False,
             highlight_method='block',
             urgent_alert_method='block',
             urgent_border=colors['urgent'],
@@ -53,7 +53,7 @@ def workspaces():
             disable_drag=True
         ),
         separator(),
-        widget.WindowName(**base(fg='focus'), fontsize=14, padding=5),
+        widget.WindowName(**base(fg='focus'), fontsize=15, padding=2),
         separator(),
     ]
 
@@ -68,39 +68,31 @@ primary_widgets = [
 
     powerline('dark', 'color2'),
 
-    icon(bg="dark", fg="light", text=''),
-
     widget.Memory(**base(bg='dark', fg='light'), measure_mem='G'),
 
     powerline('color2', 'dark'),
-
-    icon(bg="color2", fg="dark", text=''),
 
     widget.CPU(**base(bg='color2', fg='dark'), format='{freq_current}GHz {load_percent}%'),
 
     powerline('dark', 'color2'),
 
-    icon(bg="dark", fg="light", text=''),
+    icon(bg="dark", fg="light", text=' '),
 
     widget.Volume(**base(bg='dark', fg='light'), step=1),
 
     powerline('color2', 'dark'),
-
-    icon(bg="color2", text=''),  # Icon: nf-fa-feed
     
     widget.Net(**base(bg='color2'), prefix='M', interface='enp6s0', format='U:{up} D:{down}'),
 
     powerline('dark', 'color2'),
 
-    icon(bg="dark", fg='light', text=''), # Icon: nf-fae-sun_cloud
+    icon(bg="dark", fg='light', text=' '), # Icon: nf-fae-sun_cloud
 
-    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="%t, Humidity: %h, %C"),
+    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="%t"),
 
     powerline('color2', 'dark'),
 
-    icon(bg="color2", fontsize=17, text=''), # Icon: nf-mdi-calendar_clock
-
-    widget.Clock(**base(bg='color2'), format='%A %d/%m/%Y - %H:%M '),
+    widget.Clock(**base(bg='color2'), format='%A %d/%m - %H:%M'),
 
     powerline('dark', 'color2'),
 
@@ -116,15 +108,13 @@ secondary_widgets = [
 
     powerline('dark', 'color2'),
     
-    icon(bg="dark", fg='light', text=''), # Icon: nf-fae-sun_cloud
+    icon(bg="dark", fg='light', text=' '), # Icon: nf-fae-sun_cloud
 
-    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="%t, Humidity: %h, %C"),
+    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="%t"),
 
     powerline('color2', 'dark'),
 
-    icon(bg="color2", fontsize=17, text=''), # Icon: nf-mdi-calendar_clock
-
-    widget.Clock(**base(bg='color2'), format='%A %d/%m/%Y - %H:%M '),
+    widget.Clock(**base(bg='color2'), format='%A %d/%m - %H:%M'),
 
 ]
 

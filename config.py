@@ -21,6 +21,11 @@ floating_layout = def_layouts.generate_floating_layout()
 
 # Configuring Screens
 screens = def_screens.screens
+widget_defaults = {
+    'font': 'JetBrainsMono Nerd Font',
+    'fontsize': 12,
+    'padding': 2,
+}
 
 # Configuring Mouse actions
 mouse = def_mouse.generate_mouse(mod_key)
