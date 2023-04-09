@@ -6,7 +6,8 @@ from libqtile.config import Key, KeyChord
 app_chord_key = "o"
 app_shortcuts = [
     { "key" : "y", "command" : "flatpak run io.freetubeapp.FreeTube" },
-    { "key" : "i", "command" : "flatpak run io.gitlab.librewolf-community" },
+    # { "key" : "i", "command" : "flatpak run io.gitlab.librewolf-community" },
+    { "key" : "i", "command" : "mullvad-browser" },
     { "key" : "u", "command" : "thunar" },
     { "key" : "s", "command" : "flatpak run org.signal.Signal" },
     { "key" : "j", "command" : "com.github.iwalton3.jellyfin-media-player"},
