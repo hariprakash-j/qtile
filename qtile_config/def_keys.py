@@ -75,7 +75,9 @@ def generate_keys(mod_key:str, terminal:str) -> list:
         # App keychords
         Key([mod_key, "shift"], "Return", lazy.spawn("alacritty"), desc="Launch Alacritty"),
         KeyChord([mod_key], app_chord_key, [ Key([], app["key"], lazy.spawn(app["command"])) for app in app_shortcuts ]),
-        
+
+        # Dunst shortcuts
+        Key([mod_key], "n", lazy.spawn("dunstctl history-pop"), desc="Display previous notifications"),
     ]
 
     return key_bindings

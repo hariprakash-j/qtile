@@ -64,8 +64,6 @@ primary_widgets = [
 
     powerline('color2', 'dark'),
 
-    widget.Notify(**base(bg='focus')),
-
     powerline('dark', 'color2'),
 
     widget.Memory(**base(bg='dark', fg='light'), measure_mem='G'),
