@@ -11,3 +11,4 @@ nitrogen --restore
 
 # Start up applications
 flatpak run com.nextcloud.desktopclient.nextcloud &
+protonmail-bridge --noninteractive &
