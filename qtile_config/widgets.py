@@ -9,7 +9,7 @@ def base(fg='text', bg='dark'):
 
 
 def separator():
-    return widget.Sep(**base(), linewidth=0, padding=2)
+    return widget.Sep(**base(), linewidth=6, padding=2)
 
 
 def icon(fg='text', bg='dark', fontsize=18, text="?"):
@@ -29,17 +29,25 @@ def powerline(fg="light", bg="dark"):
         padding=-6
     )
 
+def powerline_reverse(fg="light", bg="dark"):
+    return widget.TextBox(
+        **base(fg, bg),
+        text="", # Icon: nf-oct-triangle_right
+        fontsize=30,
+        padding=-1
+    )
+
 
 def workspaces(): 
     return [
         widget.GroupBox(
             **base(fg='light'),
-            fontsize=15,
+            fontsize=17,
             margin_y=3,
             margin_x=3,
-            padding_y=9,
-            padding_x=9,
-            borderwidth=0,
+            padding_y=2,
+            padding_x=2,
+            borderwidth=3,
             active=colors['active'],
             inactive=colors['inactive'],
             rounded=False,
@@ -52,6 +60,7 @@ def workspaces():
             other_screen_border=colors['dark'],
             disable_drag=True
         ),
+        powerline_reverse('color2', 'dark'),
         separator(),
         widget.WindowName(**base(fg='focus'), fontsize=15, padding=2),
         separator(),
