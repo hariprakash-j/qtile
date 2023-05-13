@@ -10,10 +10,11 @@ picom -b &
 nitrogen --restore
 
 flatpak run com.nextcloud.desktopclient.nextcloud &
-flatpak run org.signal.Signal &
 protonmail-bridge --noninteractive &
 gtk-launch webapp-Airsonic6135.desktop &
 signal-desktop &
 mullvad-browser &
 flatpak run io.freetubeapp.FreeTube &
 thunderbird &
+flatpak run org.signal.Signal &
+thunar &

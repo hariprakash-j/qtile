@@ -3,16 +3,16 @@ from libqtile.lazy import lazy
 
 def generate_groups() -> list:
     return [
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=["mullvadbrowser", "firefox", "keepassxc"])]),
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=["qpdfview", "thunar", "nemo", "caja", "pcmanfm"])]),
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=["Alacritty"])]),
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=["vscodium"])]),
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=["github"])]),
-    Group("󰇮 ", layout="monadtall",        matches=[Match(wm_class=["thunderbird"])]),
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=["jellyfinmediaplayer", "freetube"])]),
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=["WebApp-Airsonic6135"])]),
-    Group("󰵅 ", layout="monadtall",        matches=[Match(wm_class=["Signal"])]),
-]   
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["mullvadbrowser", "firefox", "keepassxc"]]),
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["qpdfview", "thunar", "nemo", "caja", "pcmanfm"]]),
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["Alacritty"]]),
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["vscodium"]]),
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["github"]]),
+    Group("󰇮 ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["thunderbird"]]),
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["jellyfinmediaplayer", "freetube"]]),
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["WebApp-Airsonic6135"]]),
+    Group("󰵅 ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["Signal"]]),
+]
 
 # Group Key mappings   
 

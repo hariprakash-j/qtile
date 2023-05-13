@@ -2,6 +2,7 @@ from libqtile import hook
 from libqtile.config import Click, Drag, Match
 from libqtile.lazy import lazy
 import subprocess, os, socket
+import shutil
 
 from qtile_config import def_keys, def_groups, def_layouts, def_screens, def_mouse
 

@@ -8,7 +8,7 @@ layout_conf = {
     'margin': 10
 }
 
-def generate_layouts() -> list():
+def generate_layouts() -> list:
     return [
         layout.Max(),
         layout.MonadTall(**layout_conf),
