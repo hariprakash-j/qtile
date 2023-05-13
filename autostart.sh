@@ -4,7 +4,7 @@
 xset s off -dpms
 
 # Starting the compositor
-picom -b
+picom -b &
 
 # Applying the wallpaper
 nitrogen --restore
