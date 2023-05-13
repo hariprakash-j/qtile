@@ -93,9 +93,9 @@ primary_widgets = [
 
     powerline('dark', 'color2'),
 
-    # icon(bg="dark", fg='light', text=' '), # Icon: nf-fae-sun_cloud
+    icon(bg="dark", fg='light', text=' '), # Icon: nf-fae-sun_cloud
 
-    # widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="%t"),
+    widget.Wttr(**base(bg='dark', fg='light'), location={'Bangalore': 'Bangalore'}, format="%t"),
 
     powerline('color2', 'dark'),
 
