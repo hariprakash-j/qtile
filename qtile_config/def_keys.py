@@ -7,7 +7,7 @@ app_chord_key = "o"
 app_shortcuts = [
     { "key" : "y", "command" : "flatpak run io.freetubeapp.FreeTube" },
     { "key" : "i", "command" : "mullvad-browser" },
-    { "key" : "u", "command" : "thunar" },
+    { "key" : "u", "command" : "pcmanfm" },
     { "key" : "s", "command" : "flatpak run org.signal.Signal" },
     { "key" : "j", "command" : "com.github.iwalton3.jellyfin-media-player"},
     { "key" : "k", "command" : "keepassxc"},
