@@ -17,4 +17,4 @@ mullvad-browser &
 flatpak run io.freetubeapp.FreeTube &
 thunderbird &
 flatpak run org.signal.Signal &
-thunar &
+pcmanfm &
