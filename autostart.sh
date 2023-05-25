@@ -13,7 +13,7 @@ flatpak run com.nextcloud.desktopclient.nextcloud &
 protonmail-bridge --noninteractive &
 gtk-launch webapp-Airsonic6135.desktop &
 signal-desktop &
-mullvad-browser &
+flatpak run io.gitlab.librewolf-community &
 flatpak run io.freetubeapp.FreeTube &
 thunderbird &
 flatpak run org.signal.Signal &
