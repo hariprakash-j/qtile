@@ -3,7 +3,7 @@ from libqtile.lazy import lazy
 
 def generate_groups() -> list:
     return [
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["mullvadbrowser", "firefox", "keepassxc"]]),
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["mullvadbrowser", "firefox", "keepassxc", "LibreWolf"]]),
     Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["qpdfview", "thunar", "nemo", "caja", "pcmanfm"]]),
     Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["Alacritty"]]),
     Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["vscodium"]]),
