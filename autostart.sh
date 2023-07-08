@@ -10,11 +10,14 @@ picom -b &
 nitrogen --restore
 
 nextcloud &
-protonmail-bridge --noninteractive &
 gtk-launch webapp-Airsonic6135.desktop &
 signal-desktop &
 librewolf &
 freetube &
-thunderbird &
 signal-desktop &
 thunar &
+
+# launching the proton bridge and thunderbird after a delay
+protonmail-bridge --noninteractive &
+sleep 10
+thunderbird &
