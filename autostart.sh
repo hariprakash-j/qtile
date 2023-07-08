@@ -9,12 +9,12 @@ picom -b &
 # Applying the wallpaper
 nitrogen --restore
 
-flatpak run com.nextcloud.desktopclient.nextcloud &
+nextcloud &
 protonmail-bridge --noninteractive &
 gtk-launch webapp-Airsonic6135.desktop &
 signal-desktop &
-flatpak run io.gitlab.librewolf-community &
-flatpak run io.freetubeapp.FreeTube &
+librewolf &
+freetube &
 thunderbird &
-flatpak run org.signal.Signal &
-pcmanfm &
+signal-desktop &
+thunar &
