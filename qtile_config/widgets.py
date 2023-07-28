@@ -1,3 +1,4 @@
+import subprocess
 from libqtile import widget
 from .def_theme import colors
 
@@ -22,6 +23,17 @@ def powerline_reverse(fg="light", bg="dark"):
     return widget.TextBox(**base(fg, bg), text="", fontsize=30, padding=-1)  # Icon: nf-oct-triangle_right
 
 
+def switch_audio():
+    HEADPHONES_ID = "43"
+    SPEAKERS_ID = "42"
+    output = subprocess.Popen("wpctl status | grep '*'", shell=True, stdout=subprocess.PIPE)
+    output_string = str(output.stdout.read())
+    if SPEAKERS_ID in output_string:
+        subprocess.run(f"wpctl set-default {HEADPHONES_ID}", shell=True)
+    else:
+        subprocess.run(f"wpctl set-default {SPEAKERS_ID}", shell=True)
+
+
 def workspaces():
     return [
         widget.GroupBox(
@@ -42,7 +54,7 @@ def workspaces():
             this_screen_border=colors["grey"],
             other_current_screen_border=colors["dark"],
             other_screen_border=colors["dark"],
-            disable_drag=True
+            disable_drag=True,
         ),
         powerline_reverse("color2", "dark"),
         separator(),
@@ -66,7 +78,7 @@ primary_widgets = [
     widget.Net(**base(bg="color2"), prefix="M", interface="enp6s0", format="U:{up} D:{down}"),
     powerline("dark", "color2"),
     icon(bg="dark", fg="light", text=" "),
-    widget.Volume(**base(bg="dark", fg="light"), step=1),
+    widget.Volume(**base(bg="dark", fg="light"), step=1, mouse_callbacks={"Button3": switch_audio}),
     powerline("color2", "dark"),
     widget.Clock(**base(bg="color2"), format="%A %d/%m - %H:%M"),
     powerline("dark", "color2"),
