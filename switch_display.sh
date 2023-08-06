@@ -1,9 +1,13 @@
 #!/bin/sh
-intern=DP-0
-extern=HDMI-0
+primary=DP-0
+secondary=HDMI-0
+tertiary=DP-1
 
-if xrandr | grep "$extern disconnected"; then
-    xrandr --output "$extern" --off --output "$intern" --auto
-else
-    xrandr --output "$intern" --off --output "$extern" --auto --rotate right
+if xrandr | grep "${secondary} connected primary"; then
+    xrandr --output "${primary}" --auto --primary --output "${secondary}" --off
+    echo "switched to ${primary}"
+else if xrandr | grep "${primary} connected primary"; then
+    xrandr --output "$secondary" --auto --primary --rotate right --output "${primary}" --off
+    echo "switched to ${secondary}"
+fi
 fi
