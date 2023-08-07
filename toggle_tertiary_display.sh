@@ -1,14 +1,3 @@
 #!/bin/sh
 
-primary=DP-0
-secondary=HDMI-0
-tertiary=DP-1
-
-if xrandr | grep "${tertiary} connected 1920x1080"; then
-    xrandr --output "${tertiary}" --off
-    echo "turned on ${tertiary}"
-else
-    xrandr --output "${tertiary}" --auto --right-of "${secondary}"
-    echo "switched to ${tertiary}"
-fi
-fi
+xrandr --output DP-0 --off --output DP-2 --auto --primary --output HDMI-0 --auto --rotate right --left-of DP-2

@@ -64,6 +64,8 @@ def workspaces():
 
 
 primary_widgets = [
+    widget.CurrentLayoutIcon(**base(bg="dark", fg="light")),
+    separator(),
     *workspaces(),
     separator(),
     powerline("color2", "dark"),
