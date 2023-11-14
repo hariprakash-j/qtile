@@ -10,7 +10,7 @@ picom -b &
 nitrogen --restore
 
 nextcloud &
-gtk-launch webapp-Airsonic6135.desktop &
+gtk-launch feishin &
 signal-desktop &
 librewolf &
 freetube &
