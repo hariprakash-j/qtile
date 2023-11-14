@@ -13,6 +13,12 @@ app_shortcuts = [
     {"key": "j", "command": "jellyfinmediaplayer"},
     {"key": "k", "command": "keepassxc"},
 ]
+display_chord_key = "p"
+display_shortcuts = [
+    {"key": "1", "command": "sh '/home/hari/.config/qtile/all_displays.sh'"},
+    {"key": "2", "command": "sh '/home/hari/.config/qtile/switch_display.sh'"},
+    {"key": "3", "command": "sh '/home/hari/.config/qtile/toggle_tertiary_display.sh'"},
+]
 
 
 def generate_keys(mod_key: str, terminal: str) -> list:
@@ -45,13 +51,11 @@ def generate_keys(mod_key: str, terminal: str) -> list:
         Key([mod_key], "w", lazy.window.kill(), desc="Kill focused window"),
         Key([mod_key, "control"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([mod_key, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-        # Switch Displays
-        Key([mod_key], "p", lazy.spawn("sh '/home/hari/.config/qtile/switch_display.sh'"), desc="Switch displays"),
-        Key(
-            [mod_key, "shift"],
-            "p",
-            lazy.spawn("sh '/home/hari/.config/qtile/all_displays.sh'"),
-            desc="Turn on all displays",
+        # Switch Displays keychords
+        KeyChord(
+            [mod_key],
+            display_chord_key,
+            [Key([], display["key"], lazy.spawn(display["command"])) for display in display_shortcuts],
         ),
         Key([mod_key], "period", lazy.next_screen(), desc="Next monitor"),
         # Lock and sleep shortcuts

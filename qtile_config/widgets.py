@@ -77,7 +77,7 @@ primary_widgets = [
     icon(bg="dark", fg="light", text=" "),  # Icon: nf-fae-sun_cloud
     widget.Wttr(**base(bg="dark", fg="light"), location={"Bangalore": "Bangalore"}, format="%t"),
     powerline("color2", "dark"),
-    widget.Net(**base(bg="color2"), prefix="M", interface="enp6s0", format="U:{up} D:{down}"),
+    widget.Net(**base(bg="color2"), prefix="M", interface="enp6s0", format="{down:.3f}{down_suffix} ↓↑ {up:.3f}{up_suffix}"),
     powerline("dark", "color2"),
     icon(bg="dark", fg="light", text=" "),
     widget.Volume(**base(bg="dark", fg="light"), step=1, mouse_callbacks={"Button3": switch_audio}),
