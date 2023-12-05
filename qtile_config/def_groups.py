@@ -10,7 +10,7 @@ def generate_groups() -> list:
     Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["github"]]),
     Group("󰇮 ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["thunderbird"]]),
     Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["jellyfinmediaplayer", "freetube"]]),
-    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["WebApp-Airsonic6135"]]),
+    Group(" ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["feishin"]]),
     Group("󰵅 ", layout="monadtall",        matches=[Match(wm_class=i) for i in ["Signal"]]),
 ]
 
