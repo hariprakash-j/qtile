@@ -24,15 +24,25 @@ def powerline_reverse(fg="light", bg="dark"):
 
 
 def switch_audio():
-    HEADPHONES_ID = "43"
-    SPEAKERS_ID = "42"
-    output = subprocess.Popen("wpctl status | grep '*'", shell=True, stdout=subprocess.PIPE)
-    output_string = str(output.stdout.read())
-    if SPEAKERS_ID in output_string:
-        subprocess.run(f"wpctl set-default {HEADPHONES_ID}", shell=True)
-    else:
-        subprocess.run(f"wpctl set-default {SPEAKERS_ID}", shell=True)
+    HEADPHONES_NAME = "Starship/Matisse HD Audio Controller Analog Stereo"
+    SPEAKERS_NAME = "GA102 High Definition Audio Controller Digital Stereo"
 
+    audio_sources = [HEADPHONES_NAME, SPEAKERS_NAME]
+    source_status = []
+    for source in audio_sources:
+        output_string = get_pipewire_status(source)
+        source_status.append(output_string)
+    for status in source_status:
+        if "*" not in status:
+            target_device_id = status.split(".")[0].split(" ")[-1]
+            subprocess.run(f"wpctl set-default {target_device_id}", shell=True)
+
+
+def get_pipewire_status(source):
+    output = subprocess.Popen(
+        f"wpctl status | grep '{source}'", shell=True, stdout=subprocess.PIPE
+    )
+    return str(output.stdout.read())
 
 def workspaces():
     return [
