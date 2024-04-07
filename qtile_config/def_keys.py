@@ -1,16 +1,15 @@
-from libqtile.lazy import lazy
 from libqtile.config import Key, KeyChord
-
+from libqtile.lazy import lazy
 
 # App shortcuts using keychords
 app_chord_key = "o"
 app_shortcuts = [
-    {"key": "y", "command": "freetube"},
+    {"key": "y", "command": "flatpak run io.freetubeapp.FreeTube"},
     {"key": "m", "command": "mullvad-browser"},
-    {"key": "i", "command": "librewolf"},
+    {"key": "i", "command": "flatpak run io.gitlab.librewolf-community"},
     {"key": "u", "command": "thunar"},
     {"key": "s", "command": "signal-desktop"},
-    {"key": "j", "command": "jellyfinmediaplayer"},
+    {"key": "j", "command": "flatpak run com.github.iwalton3.jellyfin-media-player"},
     {"key": "k", "command": "keepassxc"},
 ]
 display_chord_key = "p"
@@ -28,24 +27,63 @@ def generate_keys(mod_key: str, terminal: str) -> list:
         Key([mod_key], "l", lazy.layout.right(), desc="Move focus to right"),
         Key([mod_key], "j", lazy.layout.down(), desc="Move focus down"),
         Key([mod_key], "k", lazy.layout.up(), desc="Move focus up"),
-        Key([mod_key], "space", lazy.layout.next(), desc="Move window focus to other window"),
+        Key(
+            [mod_key],
+            "space",
+            lazy.layout.next(),
+            desc="Move window focus to other window",
+        ),
         # Move windows between left/right columns or move up/down in current stack.
         # Moving out of range in Columns layout will create new column.
-        Key([mod_key, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-        Key([mod_key, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
-        Key([mod_key, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+        Key(
+            [mod_key, "shift"],
+            "h",
+            lazy.layout.shuffle_left(),
+            desc="Move window to the left",
+        ),
+        Key(
+            [mod_key, "shift"],
+            "l",
+            lazy.layout.shuffle_right(),
+            desc="Move window to the right",
+        ),
+        Key(
+            [mod_key, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"
+        ),
         Key([mod_key, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
         # Grow windows. If current window is on the edge of screen and direction
         # will be to screen edge - window would shrink.
-        Key([mod_key, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-        Key([mod_key, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-        Key([mod_key, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+        Key(
+            [mod_key, "control"],
+            "h",
+            lazy.layout.grow_left(),
+            desc="Grow window to the left",
+        ),
+        Key(
+            [mod_key, "control"],
+            "l",
+            lazy.layout.grow_right(),
+            desc="Grow window to the right",
+        ),
+        Key(
+            [mod_key, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"
+        ),
         Key([mod_key, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
         Key([mod_key], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
         # Volume control with volume button
-        Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -2%")),
-        Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +2%")),
-        Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")),
+        Key(
+            [],
+            "XF86AudioLowerVolume",
+            lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -2%"),
+        ),
+        Key(
+            [],
+            "XF86AudioRaiseVolume",
+            lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +2%"),
+        ),
+        Key(
+            [], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")
+        ),
         # Toggle between different layouts as defined below
         Key([mod_key], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
         Key([mod_key], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -55,7 +93,10 @@ def generate_keys(mod_key: str, terminal: str) -> list:
         KeyChord(
             [mod_key],
             display_chord_key,
-            [Key([], display["key"], lazy.spawn(display["command"])) for display in display_shortcuts],
+            [
+                Key([], display["key"], lazy.spawn(display["command"]))
+                for display in display_shortcuts
+            ],
         ),
         Key([mod_key], "period", lazy.next_screen(), desc="Next monitor"),
         # Lock and sleep shortcuts
@@ -73,7 +114,9 @@ def generate_keys(mod_key: str, terminal: str) -> list:
         Key(
             [mod_key],
             "x",
-            lazy.spawn("rofi -show Workspaces -modes 'Workspaces:~/.config/rofi/scripts/workspaces.sh'"),
+            lazy.spawn(
+                "rofi -show Workspaces -modes 'Workspaces:~/.config/rofi/scripts/workspaces.sh'"
+            ),
             desc="Launch codium workspaces on rofi",
         ),
         # Screenshot shortcuts
@@ -90,10 +133,24 @@ def generate_keys(mod_key: str, terminal: str) -> list:
             desc="Take a screenshot of the entire active monitor",
         ),
         # App keychords
-        Key([mod_key, "shift"], "Return", lazy.spawn("alacritty"), desc="Launch Alacritty"),
-        KeyChord([mod_key], app_chord_key, [Key([], app["key"], lazy.spawn(app["command"])) for app in app_shortcuts]),
+        Key(
+            [mod_key, "shift"],
+            "Return",
+            lazy.spawn("alacritty"),
+            desc="Launch Alacritty",
+        ),
+        KeyChord(
+            [mod_key],
+            app_chord_key,
+            [Key([], app["key"], lazy.spawn(app["command"])) for app in app_shortcuts],
+        ),
         # Dunst shortcuts
-        Key([mod_key], "n", lazy.spawn("dunstctl history-pop"), desc="Display previous notifications"),
+        Key(
+            [mod_key],
+            "n",
+            lazy.spawn("dunstctl history-pop"),
+            desc="Display previous notifications",
+        ),
     ]
 
     return key_bindings

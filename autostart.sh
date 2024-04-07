@@ -10,7 +10,6 @@ picom -b &
 nitrogen --restore
 
 nextcloud &
-librewolf &
 signal-desktop &
 
 # launching the proton bridge and thunderbird after a delay
