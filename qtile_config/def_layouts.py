@@ -7,7 +7,6 @@ layout_conf = {"border_focus": colors["focus"][0], "border_width": 4, "margin": 
 
 def generate_layouts() -> list:
     return [
-        layout.Max(),
         layout.MonadTall(**layout_conf),
         layout.VerticalTile(**layout_conf),
     ]

@@ -23,27 +23,32 @@ floating_layout = def_layouts.generate_floating_layout()
 # Configuring Screens
 screens = def_screens.screens
 widget_defaults = {
-    'font': 'JetBrainsMono Nerd Font',
-    'fontsize': 12,
-    'padding': 2,
+    "font": "JetBrainsMono Nerd Font",
+    "fontsize": 14,
+    "padding": 2,
 }
 
 # Configuring Mouse actions
 mouse = def_mouse.generate_mouse(mod_key)
 
+
 # Configuring hooks
 # Autostart programs
 @hook.subscribe.startup_once
 def autostart():
-    autostart_script = os.path.expanduser('~/.config/qtile/autostart.sh')
+    autostart_script = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.Popen([autostart_script])
+
+
 @hook.subscribe.restart
 def restart_cleanup():
-    shutil.rmtree(os.path.expanduser('~/.config/qtile/__pycache__'))
+    shutil.rmtree(os.path.expanduser("~/.config/qtile/__pycache__"))
+
 
 @hook.subscribe.shutdown
 def shutdown_cleanup():
-    shutil.rmtree(os.path.expanduser('~/.config/qtile/__pycache__'))
+    shutil.rmtree(os.path.expanduser("~/.config/qtile/__pycache__"))
+
 
 # Other Options
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())

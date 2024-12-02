@@ -1,16 +1,28 @@
 from libqtile.config import Key, KeyChord
 from libqtile.lazy import lazy
 
+from qtile_config.utils import switch_audio
+
+DEFAULT_BROWSER = "io.gitlab.librewolf-community"
 # App shortcuts using keychords
 app_chord_key = "o"
 app_shortcuts = [
     {"key": "y", "command": "flatpak run io.freetubeapp.FreeTube"},
-    {"key": "m", "command": "mullvad-browser"},
     {"key": "i", "command": "flatpak run io.gitlab.librewolf-community"},
     {"key": "u", "command": "thunar"},
-    {"key": "s", "command": "signal-desktop"},
     {"key": "j", "command": "flatpak run com.github.iwalton3.jellyfin-media-player"},
     {"key": "k", "command": "keepassxc"},
+]
+search_chord_key = "s"
+search_shortcuts = [
+    {
+        "key": "g",
+        "command": "rofi -dmenu -i -p 'duckduckgo: ' | xargs surfraw -browser=/var/lib/flatpak/exports/bin/io.gitlab.librewolf-community duckduckgo",
+    },
+    {
+        "key": "y",
+        "command": "rofi -dmenu -i -p 'youtube: ' | xargs surfraw -browser=io.gitlab.librewolf-community youtube",
+    },
 ]
 display_chord_key = "p"
 display_shortcuts = [
@@ -81,9 +93,7 @@ def generate_keys(mod_key: str, terminal: str) -> list:
             "XF86AudioRaiseVolume",
             lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +2%"),
         ),
-        Key(
-            [], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle")
-        ),
+        Key([], "XF86AudioMute", switch_audio),
         # Toggle between different layouts as defined below
         Key([mod_key], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
         Key([mod_key], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -117,20 +127,14 @@ def generate_keys(mod_key: str, terminal: str) -> list:
             lazy.spawn(
                 "rofi -show Workspaces -modes 'Workspaces:~/.config/rofi/scripts/workspaces.sh'"
             ),
-            desc="Launch codium workspaces on rofi",
+            desc="Launch workspaces on rofi",
         ),
         # Screenshot shortcuts
         Key(
             [mod_key],
             "Print",
-            lazy.spawn("flameshot screen --path /home/hari/Pictures"),
-            desc="Take a screenshot of the entire active monitor",
-        ),
-        Key(
-            [mod_key],
-            "Print",
-            lazy.spawn("flameshot gui --path /home/hari/Pictures"),
-            desc="Take a screenshot of the entire active monitor",
+            lazy.spawn("flameshot gui"),
+            desc="Take a screenshot with flameshot",
         ),
         # App keychords
         Key(
@@ -143,6 +147,15 @@ def generate_keys(mod_key: str, terminal: str) -> list:
             [mod_key],
             app_chord_key,
             [Key([], app["key"], lazy.spawn(app["command"])) for app in app_shortcuts],
+        ),
+        # Search Keychords
+        KeyChord(
+            [mod_key],
+            search_chord_key,
+            [
+                Key([], search["key"], lazy.spawn(search["command"]))
+                for search in search_shortcuts
+            ],
         ),
         # Dunst shortcuts
         Key(

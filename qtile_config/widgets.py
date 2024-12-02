@@ -1,5 +1,5 @@
-import subprocess
-from libqtile import widget
+from libqtile import lazy, widget
+
 from .def_theme import colors
 
 
@@ -16,33 +16,16 @@ def icon(fg="text", bg="dark", fontsize=18, text="?"):
 
 
 def powerline(fg="light", bg="dark"):
-    return widget.TextBox(**base(fg, bg), text="", fontsize=50, padding=-6)  # Icon: nf-oct-triangle_left
+    return widget.TextBox(
+        **base(fg, bg), text="", fontsize=50, padding=-6
+    )  # Icon: nf-oct-triangle_left
 
 
 def powerline_reverse(fg="light", bg="dark"):
-    return widget.TextBox(**base(fg, bg), text="", fontsize=30, padding=-1)  # Icon: nf-oct-triangle_right
+    return widget.TextBox(
+        **base(fg, bg), text="", fontsize=30, padding=-1
+    )  # Icon: nf-oct-triangle_right
 
-
-def switch_audio():
-    HEADPHONES_NAME = "Starship/Matisse HD Audio Controller Analog Stereo"
-    SPEAKERS_NAME = "GA102 High Definition Audio Controller Digital Stereo"
-
-    audio_sources = [HEADPHONES_NAME, SPEAKERS_NAME]
-    source_status = []
-    for source in audio_sources:
-        output_string = get_pipewire_status(source)
-        source_status.append(output_string)
-    for status in source_status:
-        if "*" not in status:
-            target_device_id = status.split(".")[0].split(" ")[-1]
-            subprocess.run(f"wpctl set-default {target_device_id}", shell=True)
-
-
-def get_pipewire_status(source):
-    output = subprocess.Popen(
-        f"wpctl status | grep '{source}'", shell=True, stdout=subprocess.PIPE
-    )
-    return str(output.stdout.read())
 
 def workspaces():
     return [
@@ -82,15 +65,24 @@ primary_widgets = [
     powerline("dark", "color2"),
     widget.Memory(**base(bg="dark", fg="light"), measure_mem="G"),
     powerline("color2", "dark"),
-    widget.CPU(**base(bg="color2", fg="dark"), format="{freq_current}GHz {load_percent}%"),
+    widget.CPU(
+        **base(bg="color2", fg="dark"), format="{freq_current}GHz {load_percent}%"
+    ),
     powerline("dark", "color2"),
     icon(bg="dark", fg="light", text=" "),  # Icon: nf-fae-sun_cloud
-    widget.Wttr(**base(bg="dark", fg="light"), location={"Bangalore": "Bangalore"}, format="%t"),
+    widget.Wttr(
+        **base(bg="dark", fg="light"), location={"Bangalore": "Bangalore"}, format="%t"
+    ),
     powerline("color2", "dark"),
-    widget.Net(**base(bg="color2"), prefix="M", interface="enp6s0", format="{down:.3f}{down_suffix} ↓↑ {up:.3f}{up_suffix}"),
+    widget.Net(
+        **base(bg="color2"),
+        prefix="M",
+        interface="enp6s0",
+        format="{down:.3f}{down_suffix} ↓↑ {up:.3f}{up_suffix}",
+    ),
     powerline("dark", "color2"),
     icon(bg="dark", fg="light", text=" "),
-    widget.Volume(**base(bg="dark", fg="light"), step=1, mouse_callbacks={"Button3": switch_audio}),
+    widget.Volume(**base(bg="dark", fg="light"), step=1),
     powerline("color2", "dark"),
     widget.Clock(**base(bg="color2"), format="%A %d/%m - %H:%M"),
     powerline("dark", "color2"),
